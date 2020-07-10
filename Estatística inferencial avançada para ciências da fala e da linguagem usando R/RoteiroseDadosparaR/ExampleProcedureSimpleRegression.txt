@@ -1,0 +1,58 @@
+1. Leia o arquivo com os dados, com a primeira linha contendo o nome das variáveis:
+
+data <- read.table("ExampleSingleRegression.txt", header = T)
+
+ou
+
+data <- read.table(file.choose(), header = T)
+
+2. Conferindo as variaveis de análise associadas à variável (data) q vc colocou na memória
+
+names (data)
+
+3. Crie um modelo de regressão linear com a função lm primeiro a variavel dependente, depois a independente, separadas por  '~'
+
+model1 <- lm(perc~h1h2, data= data)
+
+4. Testando a normalidade dos resíduos:
+
+residuos <- resid(model1)
+
+shapiro.test(residuos)
+
+5. Cheque graficamente os pressupostos do modelo
+
+par(mfrow=c(2,2))
+plot(model1)
+
+# Para melhorar o modelo, elimine os pontos que desviam os pressupostos.
+# Ou tente transformações nas variáveis
+# Ou tente uma regressão múltipla
+# Algumas funçoes úteis:
+
+#Retirando dados e rafazendo a Regressão, se necessário:
+
+model2 <- update(model, subset=(perc != ...))
+
+# Comparando modelos com fõrmulas distintas (mas mesmo número de dados):
+
+anova(model1,model2) Se p < alfa então os modelos diferem, Tome aquele que melhor explica a variância de perc.
+
+# Calculando SSE e SSY
+
+SSE <- deviance(model1)
+SSY <- deviance(lm(perc~1))
+r2 <- (SSY-SSE)/SSY
+
+8. Examine os coeficientes e a variância explicada pelo modelo
+
+summary.lm(model1)
+
+9. Veja o modelo linear contra o espalhamento dos dados
+
+plot(x,y)
+abline(model1)
+
+
+
+

@@ -1,0 +1,19 @@
+Non-significant one-way ANOVA
+
+"There were no statistically significant differences between group means as determined by one-way ANOVA (F(2,27) = 1.397, p = .15)"
+
+O primeiro número nos parênteses de F é o número de graus de liberdade do numerador (BG) e o segundo numero nos parênteses de F é o número de graus de liberdade do denominador (WG).
+
+ 
+Significant one-way ANOVA
+
+"There was a statistically significant difference between group means as determined by one-way ANOVA (F(4,43) = 7.397, p = .004) and the post hoc TukeyHSD analysis showed that the distinct groups are X different from Y and X different from Z. The mean values of each group are mean_x, mean_y and mean_z”
+
+
+
+Significant independent t- test
+
+"There was a statistically significant difference between group means as determined by a independent-groups t test (t(9,13) = 14.397, p = .0000003) and the mean values are: mean_group1 and mean_group2”
+
+
+O primeiro número nos parênteses de t é o número de graus de liberdade de um dos grupos e o segundo do outro grupo. 

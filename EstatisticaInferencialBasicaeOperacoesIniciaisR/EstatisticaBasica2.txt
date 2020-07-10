@@ -1,0 +1,28 @@
+data <- read.table(file.choose(), header=T)
+attach(data)
+
+# Histogramas superpostos e mudança de aparência (Título, nomes e extensão dos eixos, legenda):
+
+hist(taxaeloc[estilo=="RE"], xlim=c(1,7), freq=FALSE, ylim = c(0,0.9), xlab="Speech rate", ylab="Rel. Freq", main="Styles histogram")
+hist(taxaeloc[estilo=="ST"],  freq=FALSE, add=T, col="red")
+legend("topleft",text.col=c("red","black"),legend = c("ST", "RE"))
+
+# Para dividir a tela ANTES de desenhar em uma matriz m x n se usa. Exemplo de matriz 1 x 2:
+
+par(mfrow=c(1,2))
+
+# Para dividir em uma matriz 2 x 2:
+
+par(mfrow=c(2,2))
+
+
+# boxplot: boxplot(vardependente~varindependente_categorica), exemplo
+
+boxplot(taxaeloc~estilo)
+
+# tapply
+
+tapply(vardependente,, varindependente_categorica, função). Exemplo:
+
+tapply(taxaeloc,estilo,mean)
+
