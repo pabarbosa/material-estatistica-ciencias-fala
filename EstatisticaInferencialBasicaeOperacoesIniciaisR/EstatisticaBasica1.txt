@@ -56,3 +56,6 @@ skew(variavel)
 
 saq <- function(x){tmp <- quantile(x); (tmp[[4]]-tmp[[2]])/2}
 saq(variavel)
+
+
+12. Exerc’cio: Leia o arquivo MDAurelio.txt que contm as extens‹o em s’labas de cada palavra do minidicion‡rio Aurlio e calcule os descritores com as fun›es acima.
