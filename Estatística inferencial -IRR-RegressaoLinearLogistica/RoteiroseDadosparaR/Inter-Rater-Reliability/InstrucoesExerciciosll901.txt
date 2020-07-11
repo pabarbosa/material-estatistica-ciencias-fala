@@ -1,0 +1,22 @@
+Material para ser baixado aqui:
+ https://www.dropbox.com/sh/37bmlyn8pvehodx/AABd5r5JLgVLH6OhBe9mhQppa?dl=0
+
+e aqui: https://dl.dropboxusercontent.com/u/32706522/LL901-2015/RhythmDiscrimTest.mfc
+
+Instruções:
+
+1. Abrir o Praat (cf observação abaixo para quem não trabalhou com o Praat);
+2. No Menu Open, selecionar Read from file... e ler o arquivo RhthmDiscrimTest.mfc
+3. Aparecerá um objeto slecionado na janela de objetos do Praat;
+4. Cliqiue em Run e aparecerá uma mensagem apra começar o teste;
+5. O teste consiste em clicar na barra inferior em uma das 5 opções a respeito do julgamento de "modo de falar" após ouvir dois trechos em sequência separados por um pequeno "toque" agudo (livre a cada um de avaliar o que sente disso, mas é importante se concentar no modo de falar, não na pessoa, pois a mesma pessoa pode estar falando de formas diferentes ou duas pessoas diferentes de forma semelhante);
+6. Escute os dois trechos até o fim e a janela espera que clique numa das opções abaixo, após clicar o próximo par de trechos a comaprar já se inicia;
+Depois de julgar os 26 pares aparecerá a janela de que terminou. Pode fechar esta janela.
+7. No Praat parece que nada mudou, mas pode agora clicar em Extract results e em seguida em Collect to Table
+8. Aparecerá um objeto de tipo "TAble": no Menu Save escolha "Save as text file..." apra salvar a tabela.
+9. Leia a tabela no Excel para depois fazer o rearranjo do material mais facilmente;
+10. Uma vez lá, selecione as colunas correspondentes "stimulus" e "response" e as ordene em ordem crescente usando o botão apropriado do excell (A...Z).
+11. Salva peara arquivo texto estas duas colunas com seu nome.
+12. Envie para o Wellington.
+
+*O Praat pode ser baixado de www.praat,org. Clique no SO à esquerda e baixe o arquivo compactado. Abra-o na sua área e migre o icone resultante para onde achar melhor. Depois clique duas vezes nele e o Praat abre. Enjoy!

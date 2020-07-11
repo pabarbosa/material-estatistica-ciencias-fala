@@ -1,0 +1,6 @@
+Depois de ler a tabela:
+
+data <- read.table(file.choose())
+datamatrix <- as.matrix(data)
+datamatrixtransp <- t(datamatrix)
+kripp.alpha(datamatrixtransp, method="interval")

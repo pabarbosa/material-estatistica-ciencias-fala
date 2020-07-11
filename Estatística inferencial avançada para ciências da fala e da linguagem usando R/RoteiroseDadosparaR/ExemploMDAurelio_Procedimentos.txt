@@ -1,0 +1,47 @@
+1. Mude o diretório (Change dir...)
+ 
+2. Examinando o diretório em q se encontra:
+ 
+getwd()
+
+3. Leia o arquivo com os dados, com a primeira linha contendo o nome das variáveis:
+
+data <- read.table("MDAurelio.txt", header = T)
+
+ou
+
+data <- read.table(file.choose(), header = T)
+
+4. Instrua o software a tomar as variaveis da primeira linha como variaveis a serem usadas nos cálculos seguintes:
+
+attach(data)
+
+5. Conferindo as variaveis de análise associadas à variável (data) q vc colocou na memória
+
+names (data)
+
+6. Média da amostra, armazenada na variável "variável":
+
+mean(variavel)
+
+7. Desvio-padrão da amostra:
+
+sd(variavel)
+
+8. Mediana da amostra
+
+median(variavel)
+
+9. Histograma da amostra:
+
+hist (variavel)
+
+10. Criando uma função (assimetria, "skew"):
+
+skew <- function(x){(mean(x) - median(x))/sd(x)}
+
+skew(variavel)
+
+11. Criando outra função (semi-amplitude entre quartis, "smq"):
+
+smq <- function(x){tmp <- quantile(x); (tmp[[4]]-tmp[[2]])/2}

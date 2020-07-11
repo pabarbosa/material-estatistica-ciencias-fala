@@ -1,0 +1,125 @@
+1. Leia o arquivo com os dados, com a primeira linha contendo o nome das variáveis:
+
+data <- read.table("ExANOVA.txt", header = T)
+
+ou
+
+data <- read.table(file.choose(), header = T)
+
+2. Instrua o software a tomar as variaveis da primeira linha como variaveis a serem usadas nos cálculos seguintes:
+
+attach(data)
+
+3. Conferindo as variaveis de análise associadas à variável (data) q vc colocou na memória
+
+names (data)
+
+4. Crie um modelo de ANOVA com a função aov, primeiro a variavel dependente, depois a independente, separadas por  '~'
+
+model <- aov(dur~group)
+
+
+5. Testando a normalidade dos resíduos:
+
+resid <- resid(model)
+
+shapiro.test(resid)
+
+# Resultado:
+
+        Shapiro-Wilk normality test
+
+data:  resid 
+W = 0.9818, p-value = 0.7563
+
+# Normal!
+
+6. Testando a homocedasticidade:
+
+fligner.test(dur~group)
+
+        Fligner-Killeen test of homogeneity of variances
+
+data:  dur by group 
+Fligner-Killeen:med chi-squared = 9.3348, df = 3, p-value = 0.02516
+
+# Não há homogeneidade, então, teste de Kruskal-Wallis:
+
+kruskal.test(dur~group)
+
+        Kruskal-Wallis rank sum test
+
+data:  dur by group 
+Kruskal-Wallis chi-squared = 27.3256, df = 3, p-value = 5.031e-06
+
+7. No caso de haver homocedasticidade, confira o resultado da análise com:
+
+summary.aov(model)
+
+# Comparação entre grupos se houver uma diferença de médias:
+
+TukeyHSD(model)
+
+Ao rodar, confira q G3 é distinto dos demais grupos, veja graficamente:
+
+plot(TukeyHSD(model))
+
+# Outro gráfico importante é o boxplot:
+
+plot(group,dur)
+
+# E, por último, cheque graficamente os pressupostos do teste:
+
+par(mfrow=c(2,2))
+plot(model)
+
+# Para a 2-Way ANOVA, mesmos precedimentos anteriores, mas leia:
+
+data <- read.table("Exemplo2Way.txt", header = T)
+
+model1 <- aov(dur~sentence*stress)
+
+summary.aov(model1)
+
+# Verifique as interações através do valor de p!
+
+# Há a função gráfica para observar as interações:
+
+interaction.plot(sentence,stress,dur)
+interaction.plot(stress,sentence,dur)
+
+# Não havendo interações,  simplifique o modelo:
+
+model2 <- aov(dur~sentence+stress)
+
+# Observe que não há perda no poder explicativo:
+
+anova(model1,model2)
+
+# Há uma diferença de médias, mas onde? Use o teste TukeyHSD:
+
+TukeyHSD(model2)
+
+# Ao rodar, confira q G3 é distinto dos demais grupos, veja graficamente:
+
+plot(TukeyHSD(model2))
+
+# Para uma ANOVA fatorial, vale a pena conferir o chamado "effect size" ou "eta ao quadrado", que é a proporção da soma de quadrados em relação à soma total. No exemplo dado em aula em 4/10/2010, o resultado do modelo sem interações é este:
+
+            Df  Sum Sq Mean Sq F value    Pr(>F)    
+sentence     2 26527.1 13263.5  75.503 < 2.2e-16 ***
+stress       1  2729.8  2729.8  15.539 0.0002305 ***
+Residuals   55  9661.8   175.7                      
+---
+
+A magnitude do efeito (eta-quadrado) para o fator SENTENCE é: 26527.1/(26527.1+2729.8+9661.8) = 0.68, enquanto a do fator STRESS é de: 2729.8/(26527.1+2729.8+9661.8) = 0.07. Ambas explicam 75% da variancia da variavel dependente.
+
+
+
+
+
+
+
+
+
+ 
