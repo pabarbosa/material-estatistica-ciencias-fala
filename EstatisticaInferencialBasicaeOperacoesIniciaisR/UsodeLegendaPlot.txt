@@ -1,3 +1,0 @@
-plot(f0med,enfespec,pch=c(15,16,17,21,22,24)[as.numeric(Dist)], col=c("black", "blue","red", "green","lightgreen","lightblue")[as.numeric(Dist)], xlim=c(0,300), ylim=c(0,30),main="F0 x Esforco Vocal")
-
-legend("topleft", legend=c(1.5,3,7.5,15,25,40),pch = c(15,16,17,21,22,24), col=c("black", "blue","red", "green","lightgreen","lightblue"))

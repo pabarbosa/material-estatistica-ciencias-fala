@@ -1,5 +1,0 @@
-s1 s2 s3 sentence type
-69 47 56 s t5
-73 50 57 s t6
-87 55 71 c t5
-92 63 83 c t6

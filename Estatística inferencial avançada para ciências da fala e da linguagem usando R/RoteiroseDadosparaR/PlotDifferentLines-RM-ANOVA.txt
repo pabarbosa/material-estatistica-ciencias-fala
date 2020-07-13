@@ -1,4 +1,0 @@
-data <- read.table(file.choose(), header=T)
-X <- as.matrix(data)
-Y <- t(X)
-matplot(Y, type="l")
