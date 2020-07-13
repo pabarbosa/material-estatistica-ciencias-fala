@@ -1,20 +1,20 @@
 1. Leia o arquivo com os dados, com a primeira linha contendo o nome das variáveis:
 
-data <- read.table("ExampleSingleRegression.txt", header = T)
+data <- read.table("ExRegLin", header = T)
 
 ou
 
 data <- read.table(file.choose(), header = T)
 
-2. Conferindo as variaveis de análise associadas à variável (data) q vc colocou na memória
+2. Conferindo as vari‡veis de an‡lise associadas ˆ vari‡vel (data) q vc colocou na mem—ria
 
 names (data)
 
-3. Crie um modelo de regressão linear com a função lm primeiro a variavel dependente, depois a independente, separadas por  '~'
+3. Crie um modelo de regress‹o linear com a fun‹o lm primeiro a vari‡vel dependente, depois a independente, separadas por  '~'
 
-model1 <- lm(perc~h1h2, data= data)
+model1 <- lm(f0med~dur, data= data)
 
-4. Testando a normalidade dos resíduos:
+4. Testando a normalidade dos res’duos:
 
 residuos <- resid(model1)
 
@@ -26,25 +26,25 @@ par(mfrow=c(2,2))
 plot(model1)
 
 # Para melhorar o modelo, elimine os pontos que desviam os pressupostos.
-# Ou tente transformações nas variáveis
-# Ou tente uma regressão múltipla
-# Algumas funçoes úteis:
+# Ou tente transforma›es nas vari‡veis
+# Ou tente uma regress‹o mœltipla
+# Algumas fun›es œteis:
 
-#Retirando dados e rafazendo a Regressão, se necessário:
+#Retirando dados e refazendo a Regress‹o, se necess‡rio:
 
-model2 <- update(model, subset=(perc != ...))
+model2 <- update(model, subset=(f0med != ...))
 
-# Comparando modelos com fõrmulas distintas (mas mesmo número de dados):
+# Comparando modelos com f—rmulas distintas (mas mesmo número de dados):
 
-anova(model1,model2) Se p < alfa então os modelos diferem, Tome aquele que melhor explica a variância de perc.
+anova(model1,model2) Se p < alfa ent‹o os modelos diferem, Tome aquele que melhor explica a vari‰ncia de f0med.
 
 # Calculando SSE e SSY
 
 SSE <- deviance(model1)
-SSY <- deviance(lm(perc~1))
+SSY <- deviance(lm(f0med~1))
 r2 <- (SSY-SSE)/SSY
 
-8. Examine os coeficientes e a variância explicada pelo modelo
+8. Examine os coeficientes e a vari‰ncia explicada pelo modelo
 
 summary.lm(model1)
 
