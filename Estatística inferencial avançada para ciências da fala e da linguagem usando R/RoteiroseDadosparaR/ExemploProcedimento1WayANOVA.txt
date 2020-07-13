@@ -1,0 +1,75 @@
+1. Leia o arquivo com os dados, com a primeira linha contendo o nome das variáveis:
+
+data <- read.table(file.choose(), header = T)
+
+2. Instrua o software a tomar as variaveis da primeira linha como variaveis a serem usadas nos cálculos seguintes:
+
+attach(data)
+
+3. Conferindo as variaveis de análise associadas à variável (data) q vc colocou na memória
+
+names (data)
+
+4. Crie um modelo de ANOVA com a função aov, primeiro a variavel dependente (var 1 é sua variável, usar cada uma, como F0med, F2 etc), depois a independente, separadas por  '~'
+
+model <- aov(f0Median~Distance)
+
+
+5. Testando a normalidade dos resíduos:
+
+resid <- resid(model)
+
+shapiro.test(resid)
+
+# Resultado:
+
+        Shapiro-Wilk normality test
+
+data:  resid 
+W = xxx , p-value = xxx
+
+# Se p > 0.05: Normal!
+
+6. Testando a homocedasticidade:
+
+fligner.test(f0Median~Distance)
+
+        Fligner-Killeen test of homogeneity of variances
+
+data:  dur by group 
+Fligner-Killeen:med chi-squared = xxx, df = x, p-value = xx
+
+# Se p > 0.05: distribuicao com homogeneidade de variâncias, pode continuar!
+
+
+# E, por último, cheque graficamente os pressupostos do teste:
+
+par(mfrow=c(2,2))
+plot(model)
+
+# Se a homogeneidade é gravemente comprometida (p < alfa/10), então, use o teste de Kruskal-Wallis:
+
+kruskal.test(f0Median~Distance)
+
+        Kruskal-Wallis rank sum test
+
+data:  dur by group 
+Kruskal-Wallis chi-squared = xxx, df = x, p-value = xxxx
+
+7. No caso de haver homocedasticidade, confira o resultado da análise com:
+
+summary.aov(model)
+
+# Comparação entre grupos se houver uma diferença de médias:
+
+TukeyHSD(model)
+
+Ao rodar, confira q G3 é distinto dos demais grupos, veja graficamente:
+
+plot(TukeyHSD(model))
+
+# Outro gráfico importante é o boxplot:
+
+plot(Distance,f0Median)
+
+
